@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canti's Domain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #1b1a1a;
+      --bg-darker: #0d0c0b;
+      --text-primary: #4b96eb;
+      --text-secondary: #beceed;
+      --text-muted: #999999;
+      --border-color: #edfaf1;
+      --accent-color: #f25df5;
+      --shadow-glow: rgba(75,150,235,0.6);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      margin: 0;
+      background-color: var(--bg-darker);
+      color: #c0c0c0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 4px solid white;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.85);
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 24px var(--shadow-glow);
+    }
+    header {
+      background-image: url("https://i.pinimg.com/originals/52/18/9c/52189c28e68e7712f74b7c1eb26b1f86.gif");
+      background-size: cover;
+      background-position: center;
+      color: var(--text-secondary);
+      padding: 3em 1em 2em;
+      text-align: center;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.75);
+      border-bottom-left-radius: 48px;
+      border-bottom-right-radius: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(130deg, rgba(27, 26, 26, 0.7), transparent 75%);
+      pointer-events: none;
+      border-bottom-left-radius: 48px;
+      border-bottom-right-radius: 48px;
+    }
+    header h1 {
+      position: relative;
+      margin: 0 0 0.4em;
+      font-size: 3rem;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+      color: var(--text-secondary);
+      z-index: 1;
+    }
+    header .subtitle {
+      position: relative;
+      font-size: 1.3em;
+      color: var(--text-secondary);
+      z-index: 1;
+      font-style: italic;
+    }
+    nav {
+      background-color: var(--bg-dark);
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 1rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      padding: 12px 20px;
+      border-radius: 12px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      user-select: none;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      outline: none;
+      box-shadow: 0 0 10px var(--accent-color);
+    }
+    nav a.active {
+      background: linear-gradient(45deg, var(--text-primary), var(--accent-color));
+      color: #222;
+      box-shadow: 0 0 12px var(--accent-color);
+    }
+    /* secret button styling - same style as other nav links */
+    nav a.secret-link {
+      background: linear-gradient(45deg, var(--text-primary), var(--accent-color));
+      color: #222;
+      box-shadow: 0 0 12px var(--accent-color);
+    }
+    main {
+      background-color: var(--bg-dark);
+      max-width: 1100px;
+      margin: 2em auto 5em auto;
+      padding: 1.5em 2em;
+      border-radius: 20px;
+      box-shadow: 0 0 24px rgba(75,150,235,0.8);
+    }
+    section {
+      margin-bottom: 3.2em;
+      padding-bottom: 0.5em;
+      border-bottom: 2px solid var(--text-primary);
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 12px var(--accent-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+      width: fit-content;
+      margin-left: 0;
+    }
+    .text-primary {
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 1.2em;
+      line-height: 1.55;
+    }
+    .text-secondary {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 1.2em;
+    }
+    .text-muted {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
+    }
+    .content-box {
+      background-color: #151515de;
+      border: 3px solid var(--border-color);
+      padding: 28px 26px;
+      margin: 1.6rem 0;
+      border-radius: 14px;
+      box-shadow: 0 0 20px var(--border-color);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+    .content-box:hover {
+      box-shadow: 0 0 30px var(--accent-color);
+    }
+    .float-left-img {
+      float: left;
+      margin-right: 1.4em;
+      max-width: 380px;
+      height: auto;
+      border: 4px solid var(--accent-color);
+      border-radius: 12px;
+      box-shadow: 0 6px 18px var(--accent-color);
+      transition: transform 0.3s ease;
+    }
+    .float-left-img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 12px 28px var(--accent-color);
+    }
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    footer {
+      background-color: var(--bg-darker);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 1.3em 0;
+      font-size: 1rem;
+      border-top: 1px solid #222;
+      border-radius: 0 0 20px 20px;
+      box-shadow: inset 0 4px 12px #0008;
+      user-select: none;
+      margin-top: 3rem;
+    }
+    @media (max-width: 900px) {
+      .float-left-img {
+        float: none;
+        display: block;
+        margin: 0 auto 1.4em auto;
+        max-width: 90%;
+      }
+      main {
+        padding: 1em 1.7em 4em 1.7em;
+      }
+      nav {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      nav a {
+        padding: 11px 16px;
+        font-size: 1rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      body {
+        font-size: 0.9rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+        padding: 10px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Canti's Domain</h1>
+    <p class="text-secondary subtitle">A simple webpage that shows who I am :P</p>
+  </header>
+
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#anime">Anime</a>
+    <a href="#games">Games</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#contact">Contact</a>
+    <a href="secret.html" class="secret-link" aria-label="Secret page">Secret🎮</a>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h2>Home</h2>
+      <p class="text-primary">
+        Home of the furry femboy &gt;w&lt; (Yokoso Watashi No Furry Society Ye), YOU GUYS ARE VERY WELCOME AND BE YOURSELF HERE!!! Also btw just note that my nickname is Canti, and ermmm I love that name.
+      </p>
+      <div class="content-box clearfix">
+        <img src="https://i.pinimg.com/originals/f6/05/e5/f605e558c165eb4744f82c255d61a927.gif" alt="Flcl Canti Gif" class="float-left-img" />
+        <p class="text-primary" style="margin-top: 0;">BALLSBALLSBALLSBALLS</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p class="text-primary">My name is Awian Islam, I'm trying to be different from everyone :3, I like the color blue and I like food as well ;3 ALSO VOLLEYBALL IS AMAZING IN MY OPINION it should be loved.</p>
+    </section>
+
+    <section id="anime">
+      <h2>Anime</h2>
+      <p class="text-primary">My top five animes:</p>
+
+      <p class="text-primary" style="font-weight: 700;">FLCL</p>
+      <p class="text-muted"></p>
+      <div class="content-box clearfix">
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*dahgNYGMJrVWOKMxFB8_nA.jpeg" alt="FLCL" class="float-left-img" style="width: 400px; height: 270px;" />
+        <p class="text-muted">FLCL (lowk kinda changed me hella, like it genuinely changed me, I loved the anime and it was also very weird cuz it lowkey had a girl and she would groom her bf's brother, and he was way younger, but the anime itself was very peak and very suggestive I'd say). Also this is where the character Canti is from this anime and I loveeee him.</p>
+      </div>
+
+      <p class="text-primary" style="font-weight: 700;">Soul Eater</p>
+      <p class="text-muted">Soul Eater (legit the most epic anime of all time for me. It is a sequel to Fire Force even though it came out before Fire Force which is very weird. I love this anime because of the art style and the fashion style, and the characters and power system is so peak. You get to have your friend as your weapon or meister).</p>
+      <div class="content-box">
+        <img src="https://static.wikia.nocookie.net/characterprofile/images/6/67/Souleater.jpg/revision/latest?cb=20160103191045" alt="Soul Eater" />
+      </div>
+
+      <p class="text-primary" style="font-weight: 700;">Dragon Ball</p>
+      <p class="text-muted">Dragon Ball (generational anime started it all, also idk why Mexicans love Goku so much, like I could just carry a Goku shirt with me all the time and not get attacked by the cartel).</p>
+      <div class="content-box">
+        <img src="https://images.alphacoders.com/100/thumb-1920-1002964.jpg" alt="Dragon Ball Super Saiyan Blue Gogeta vs Broly" />
+      </div>
+
+      <p class="text-primary" style="font-weight: 700;">My Hero Academia</p>
+      <p class="text-muted">My Hero Academia (yes I like it :P KACHAN, if you say MHA is mid, YOU JUST LISTEN TO THE FANBASE, trust me it is a peak anime and the final seasons are so frickin peak, INCLUDING THE MOVIES).</p>
+      <div class="content-box">
+        <img src="https://4kwallpapers.com/images/wallpapers/my-hero-academia-1920x1080-19011.jpg" alt="My Hero Academia Wallpaper" />
+      </div>
+
+      <p class="text-primary" style="font-weight: 700;">Takopi Original Sin</p>
+      <p class="text-muted">Takopi Original Sin (traumatizing, like literally seeing a little girl hang herself and the trauma between their parents try to get resolved by a little blob of a pink octopus alien that fricks up everything but it was so emotional lowkey made me cry a few times).</p>
+      <div class="content-box">
+        <img src="https://images2.alphacoders.com/140/1401436.jpg" alt="Takopi's Original Sin" />
+      </div>
+    </section>
+
+    <section id="games">
+      <h2>Games</h2>
+      <p class="text-primary">Games I like :3 :</p>
+
+      <div class="content-box">
+        <p class="text-primary" style="font-weight: 700;">Roblox</p>
+        <p class="text-muted">Roblox (someone fight me in battleground games please, also I play VB Legends, I'm like level 163 :P, I have like 7 SECRETS, Kazana is good trust me please).</p>
+        <img src="https://tr.rbxcdn.com/180DAY-e7388608387ad538136812492f2af4e5/500/280/Image/Jpeg/noFilter" alt="The Strongest Battlegrounds - Roblox" />
+      </div>
+
+      <div class="content-box">
+        <p class="text-primary" style="font-weight: 700;">Arkham Trilogy (Arkham Knight, Arkham City, Arkham Asylum)</p>
+        <p class="text-muted">The Batman games were so peak for their time, I got to beat the crap out of criminals. Also the story was really good with fear toxin and stuff, and the Joker dying was literally the most unforeseen thing happening, BATMAN BECOMES THE JOKER, but killed himself to protect Arkham.</p>
+        <img src="https://hb.imgix.net/eac87a2f30873607e26e815eead78738db6a3d42.jpeg?auto=compress,format&amp;fit=crop&amp;h=425&amp;w=741&amp;s=75ff4c3c704526214190f5c2e7223c64" alt="Batman Arkham Knight" style="max-width: 630px; width: 100%; height: auto; display: block; margin: 0 auto;" />
+      </div>
+
+      <div class="content-box">
+        <p class="text-primary" style="font-weight: 700;">Assassin's Creed Syndicate</p>
+        <p class="text-muted">Assassinate people and see BLOOD &lt;3, also most of it happened in LONDON, and I got to assassinate the guards and stuff by stuffing them in big lockers and killing them. Playing this game would make my relatives and aunties question me and if I got scarred as a kid.</p>
+        <img src="https://store.ubisoft.com/on/demandware.static/-/Sites-masterCatalog/default/dw226c82b8/images/pdpbanner/56c4947988a7e300458b45c6-bg.jpg" alt="Assassin's Creed Syndicate" style="max-width: 100%; height: auto; border-radius: 8px;" />
+      </div>
+    </section>
+
+    <section id="hobbies">
+      <h2>Hobbies</h2>
+      <p class="text-primary">My Hobbies:</p>
+      <div class="content-box">
+        <p class="text-primary" style="font-weight: 700;">Volleyball</p>
+        <p class="text-muted">I love volleyball with my heart and I have a lot of passion for it. I love the sport sincerely and it is very fun. I believe everyone would enjoy it if they played it often.</p>
+        <img src="https://i.ytimg.com/vi/Q6iO5kU08C8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&amp;rs=AOn4CLCtDbYkFdVQoIHSAD9TVVmv1sx_tA" alt="Volleyball" />
+      </div>
+      <div class="content-box">
+        <p class="text-primary" style="font-weight: 700;">Building</p>
+        <p class="text-muted">Gundam (or Legos or woodworking): I love building Gundam because it helps my mind a lot and it is relaxing at times but it can also be frustrating :P. I also love building Legos or even woodworking as it is very fun :3.</p>
+        <img src="https://i.ytimg.com/vi/vyf9mG8hyZg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&amp;rs=AOn4CLAXONo0HZU8dRmCv1pi9ruPc25QyA" alt="MGEX 1/100 STRIKE FREEDOM GUNDAM LONG PV" />
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="text-muted">Email: supadupacanti@email.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Canti's Mini Website</p>
+  </footer>
+</body>
+</html>
